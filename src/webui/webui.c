@@ -1981,9 +1981,9 @@ hdhomerun_server_discover(http_connection_t *hc, const char *remain, void *opaqu
   htsmsg_add_str(msg, "Manufacturer", "Tvheadend");
   // Random string, but has to be fixed length.
   htsmsg_add_str(msg, "DeviceAuth", "3xw5UaJXhVShHEBoy76FuYQi");
-  htsmsg_add_str_printf(msg, "BaseURL", "http://%s:%u", http_ip, tvheadend_webui_port);
+  htsmsg_add_str_printf(msg, "BaseURL", "http://10.10.30.121:%u", tvheadend_webui_port);
   htsmsg_add_str_printf(msg, "DeviceID", "%08X", deviceid);
-  htsmsg_add_str_printf(msg, "LineupURL", "http://%s:%u/lineup.json", http_ip, tvheadend_webui_port);
+  htsmsg_add_str_printf(msg, "LineupURL", "http://10.10.30.121:%u/lineup.json", tvheadend_webui_port);
 
   // If user has not explicitly set a count then we use a default.
   // The actual number of tuners is unknown since we allow multiplex
@@ -2132,7 +2132,7 @@ hdhomerun_server_device_xml(http_connection_t *hc, const char *remain, void *opa
                  "<major>1</major>"
                  "<minor>0</minor>"
                  "</specVersion>"
-                 "<URLBase>http://%s:%u</URLBase>"
+                 "<URLBase>http://10.10.30.121:%u</URLBase>"
                  "<device>"
                  "<deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType>"
                  "<friendlyName>%s</friendlyName>"
@@ -2144,7 +2144,7 @@ hdhomerun_server_device_xml(http_connection_t *hc, const char *remain, void *opa
                  "<UDN>uuid:%8.8x-745e-5d9a-8903-4a02327a7e09</UDN>"
                  "</device>"
                  "</root>",
-                 http_ip, tvheadend_webui_port,
+                 tvheadend_webui_port,
                  server_name_escaped,
                  // We'll use the same for model name and number to
                  // avoid too much user configuration.  Some clients
