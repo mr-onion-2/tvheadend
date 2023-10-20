@@ -2046,8 +2046,7 @@ hdhomerun_server_lineup(http_connection_t *hc, const char *remain, void *opaque)
     chnum_str = channel_get_number_as_str(ch, chnum, sizeof(chnum));
     htsbuf_append_and_escape_jsonstr(hq, chnum_str ? chnum_str : "0");
     htsbuf_append_str(hq, ", \"URL\" : ");
-    sprintf(url, "http://%s:%u/stream/channel/%s?profile=pass%s%s",
-            http_ip,
+    sprintf(url, "http://10.10.30.121:%u/stream/channel/%s?profile=pass%s%s",
             tvheadend_webui_port,
             channel_get_uuid(ch, ubuf),
             use_auth? "&auth=" : "",
